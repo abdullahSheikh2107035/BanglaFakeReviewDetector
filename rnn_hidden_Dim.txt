@@ -1,0 +1,14 @@
+=== This model's parameter shapes vs. the diagram's U / W / V shapes ===
+
+Component                        This model         Diagram
+e_t   (embedded token)           300 x 1            d x 1
+h_t-1 / h_t (hidden state)       64 x 1             d x 1
+W  = rnn.weight_ih_l0            (64, 300)          d x d
+U  = rnn.weight_hh_l0            (64, 64)           d x d
+V  = fc.weight (this model)      (1, 64)            |V| x d
+y_hat (this model, per review)   (1,) -> 1 x 1      |V| x 1
+
+|V| (vocabulary size actually used for the embedding) = 8000
+d   (hidden_dim chosen by the search)                  = 64
+embedding dim (fastText)                                = 300
+Actual vocabulary size: 8000
